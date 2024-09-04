@@ -1,0 +1,36 @@
+int Light = 11;
+int sensor = 8;
+int led = 13;
+void setup() 
+{
+  pinMode(Light, OUTPUT);
+  pinMode(sensor, INPUT);
+  pinMode(led, OUTPUT);
+  
+  digitalWrite(Light,LOW);
+  digitalWrite(sensor,LOW);
+  
+  digitalWrite(led,LOW);
+
+  while(millis()<13000)
+  {
+    digitalWrite(led,HIGH);
+    delay(50);
+    digitalWrite(led,LOW);
+    delay(50);
+  }
+  digitalWrite(led,HIGH);
+  
+}
+
+void loop() 
+{
+  if(digitalRead(sensor)==HIGH)
+  {
+   digitalWrite(Light,HIGH);
+   delay(3000);
+   digitalWrite(Light,LOW); 
+   while(digitalRead(sensor)==HIGH);
+  }
+
+}
